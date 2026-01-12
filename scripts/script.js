@@ -21,7 +21,9 @@ const meusCertificados = [
 
     'vitor kruger gomes - Curso JavaScript_ métodos de array - Alura',
 
-    'vitor kruger gomes - Curso JavaScript_ implementando CRUD com requisições HTTP - Alura'
+    'vitor kruger gomes - Curso JavaScript_ implementando CRUD com requisições HTTP - Alura',
+
+    'vitor kruger gomes - Curso JavaScript_ evoluindo a sua aplicação com ES6+ - Alura'
 ]
 
 const MeusSites = [
