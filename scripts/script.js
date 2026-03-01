@@ -1,4 +1,3 @@
-
 const pesquisar = document.querySelector('.perquisar')
 const resultadoDaPesquisa = document.querySelector('.resultadoDaPesquisa')
 
@@ -49,7 +48,7 @@ function mostrarCertificados(tipoDeCertificado) {
         divOndeEstãoMeusCertificados.style.display = 'block'
         const certificado = meusCertificados[tipoDeCertificado]
         certificado.forEach(cert => {
-            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="./img/meusCertificadosImg/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
+            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="../img/meusCertificadosImg/javaScript/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
         })
         certificadosVisiveis = true
     }
@@ -63,14 +62,14 @@ function mudarCertificados() {
         divMeusCertificados.innerHTML = ''
         const certificado = meusCertificados['nodeJs']
         certificado.forEach(cert => {
-            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="./img/meusCertificadosImg/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
+            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="../img/meusCertificadosImg/nodeJs/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
         })
     } else {
         h2LinguagemDoCertificado.textContent = 'JavaScript'
         divMeusCertificados.innerHTML = ''
         const certificado = meusCertificados['JavaScript']
         certificado.forEach(cert => {
-            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="./img/meusCertificadosImg/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
+            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="../img/meusCertificadosImg/javaScript/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
         })
     }
 }
