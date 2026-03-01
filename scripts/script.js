@@ -8,25 +8,31 @@ const divOndeEstãoMeusCertificados = document.getElementById('divMeusCertificad
 
 const btnImgIconeDeSeta = document.getElementById('imgIconeDeSeta')
 
-const meusCertificados = [
-    'vitor kruger gomes - Curso JavaScript na Web_ manipule o DOM com JavaScript - Alura',
 
-    'vitor kruger gomes - Curso JavaScript_ construindo páginas dinâmicas - Alura',
+const meusCertificados = {
+        JavaScript: [
+            'vitor kruger gomes - Curso JavaScript na Web_ manipule o DOM com JavaScript - Alura',
 
-    'vitor kruger gomes - Curso JavaScript_ entendendo promises e async_await - Alura',
+            'vitor kruger gomes - Curso JavaScript_ construindo páginas dinâmicas - Alura',
 
-    'vitor kruger gomes - Curso JavaScript_ explorando a manipulação de elementos e da localStorage - Alura',
+            'vitor kruger gomes - Curso JavaScript_ entendendo promises e async_await - Alura',
 
-    'vitor kruger gomes - Curso JavaScript_ manipulando elementos no DOM - Alura',
+            'vitor kruger gomes - Curso JavaScript_ explorando a manipulação de elementos e da localStorage - Alura',
 
-    'vitor kruger gomes - Curso JavaScript_ métodos de array - Alura',
+            'vitor kruger gomes - Curso JavaScript_ manipulando elementos no DOM - Alura',
 
-    'vitor kruger gomes - Curso JavaScript_ implementando CRUD com requisições HTTP - Alura',
+            'vitor kruger gomes - Curso JavaScript_ métodos de array - Alura',
 
-    'vitor kruger gomes - Curso JavaScript_ evoluindo a sua aplicação com ES6+ - Alura',
+            'vitor kruger gomes - Curso JavaScript_ implementando CRUD com requisições HTTP - Alura',
 
-    'vitor kruger gomes - Curso Node.js e terminal_ dominando o ambiente de desenvolvimento front-end - Alura'
-]
+            'vitor kruger gomes - Curso JavaScript_ evoluindo a sua aplicação com ES6+ - Alura',
+
+            'vitor kruger gomes - Curso Node.js e terminal_ dominando o ambiente de desenvolvimento front-end - Alura'
+        ],
+        nodeJs: [
+            'vitor kruger gomes - Curso JavaScript com Node.js_ criando sua primeira biblioteca - Alura'
+        ]
+    }
 
 const MeusSites = [
     'https://vitor-rlk-gomes.github.io/fokus/',
@@ -35,48 +41,46 @@ const MeusSites = [
 ]
 
 let certificadosVisiveis = false
+const h2LinguagemDoCertificado = document.querySelector('#h2linguagemDoCertificado')
 
-function mostrarCertificados(){
-    if(certificadosVisiveis){
-        btnImgIconeDeSeta.setAttribute('src', './img/icones/seta-para-baixo.png')
-        divMeusCertificados.innerHTML = ''
-        divOndeEstãoMeusCertificados.style.display = 'none'
-        certificadosVisiveis = false
-        return;
-    }
-
-    let index = -1
-    meusCertificados.forEach(certificados => {
-
-        btnImgIconeDeSeta.setAttribute('src', './img/icones/seta-direita.png')
-        btnImgIconeDeSeta.style.transform = 'rotate(90angle)'
-        btnImgIconeDeSeta.style.transition = '2s'
-    
-        certificados = index ++
-
-        certificados = document.createElement('li')
-        certificados.classList.add('liDeCertificado')
-
-        const linkDoCertificado = document.createElement('a')
-        linkDoCertificado.classList.add('linkDoCertificado')
-
-        linkDoCertificado.setAttribute('href', `./img/meusCertificadosImg/${meusCertificados[index]}.pdf`)
-        linkDoCertificado.target = '_blank'
-        linkDoCertificado.textContent = meusCertificados[index]
-
-        certificados.appendChild(linkDoCertificado)
-
-        divMeusCertificados.appendChild(certificados)
-
+function mostrarCertificados(tipoDeCertificado) {
+    if (!certificadosVisiveis) {
+        h2LinguagemDoCertificado.textContent = tipoDeCertificado 
         divOndeEstãoMeusCertificados.style.display = 'block'
+        const certificado = meusCertificados[tipoDeCertificado]
+        certificado.forEach(cert => {
+            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="./img/meusCertificadosImg/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
+        })
+        certificadosVisiveis = true
+    }
+}
 
-    });
+const mudaCertificado = document.getElementById('mudaCertificado')
 
-    certificadosVisiveis = true
+function mudarCertificados() {
+    if (h2LinguagemDoCertificado.textContent === 'JavaScript') {
+        h2LinguagemDoCertificado.textContent = 'Node.js'
+        divMeusCertificados.innerHTML = ''
+        const certificado = meusCertificados['nodeJs']
+        certificado.forEach(cert => {
+            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="./img/meusCertificadosImg/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
+        })
+    } else {
+        h2LinguagemDoCertificado.textContent = 'JavaScript'
+        divMeusCertificados.innerHTML = ''
+        const certificado = meusCertificados['JavaScript']
+        certificado.forEach(cert => {
+            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="./img/meusCertificadosImg/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
+        })
+    }
 }
 
 btnCertificados.addEventListener('click', () => {
-    mostrarCertificados() 
+    mostrarCertificados('JavaScript')
+})
+
+mudaCertificado.addEventListener('click', () => {
+    mudarCertificados()
 })
 
 pesquisar.addEventListener('focus', () => {
