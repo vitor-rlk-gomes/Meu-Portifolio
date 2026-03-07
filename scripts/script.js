@@ -50,9 +50,9 @@ function mostrarCertificados(tipoDeCertificado) {
         certificado.forEach(cert => {
             const lideCertificado = document.createElement('li')
             lideCertificado.classList.add('liDeCertificado')
-            
+
             const linkDoCertificado = document.createElement('a')
-            linkDoCertificado.href = `../img/meusCertificadosImg/${tipoDeCertificado}/${cert}.pdf`
+            linkDoCertificado.href = `./img/meusCertificadosImg/${tipoDeCertificado}/${cert}.pdf`
             linkDoCertificado.target = '_blank'
             linkDoCertificado.classList.add('linkDoCertificado')
             linkDoCertificado.textContent = cert
@@ -72,14 +72,14 @@ function mudarCertificados() {
         divMeusCertificados.innerHTML = ''
         const certificado = meusCertificados['nodeJs']
         certificado.forEach(cert => {
-            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="../img/meusCertificadosImg/nodeJs/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
+            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="./img/meusCertificadosImg/nodeJs/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
         })
     } else {
         h2LinguagemDoCertificado.textContent = 'JavaScript'
         divMeusCertificados.innerHTML = ''
         const certificado = meusCertificados['JavaScript']
         certificado.forEach(cert => {
-            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="../img/meusCertificadosImg/javaScript/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
+            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="./img/meusCertificadosImg/javaScript/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
         })
     }
 }
