@@ -48,7 +48,17 @@ function mostrarCertificados(tipoDeCertificado) {
         divOndeEstãoMeusCertificados.style.display = 'block'
         const certificado = meusCertificados[tipoDeCertificado]
         certificado.forEach(cert => {
-            divMeusCertificados.innerHTML += `<li class="liDeCertificado"><a href="../img/meusCertificadosImg/javaScript/${cert}.pdf" target="_blank" class="linkDoCertificado">${cert}</a></li>`
+            const lideCertificado = document.createElement('li')
+            lideCertificado.classList.add('liDeCertificado')
+            
+            const linkDoCertificado = document.createElement('a')
+            linkDoCertificado.href = `../img/meusCertificadosImg/${tipoDeCertificado}/${cert}.pdf`
+            linkDoCertificado.target = '_blank'
+            linkDoCertificado.classList.add('linkDoCertificado')
+            linkDoCertificado.textContent = cert
+
+            lideCertificado.appendChild(linkDoCertificado)
+            divMeusCertificados.appendChild(lideCertificado)
         })
         certificadosVisiveis = true
     }
